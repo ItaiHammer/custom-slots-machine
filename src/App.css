@@ -1,167 +1,166 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 body {
-    background: #313338;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+  background: #313338;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .App {
-    text-align: center;
+  text-align: center;
 }
 
 .slot-machine {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
 }
 
 .slots {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .highlight {
-    background: rgba(255, 166, 0, 0.3);
-    margin: 3rem;
-    width: 13rem;
-    height: 3rem;
-    position: absolute;
-    border-radius: 0.5rem;
+  background: rgba(255, 166, 0, 0.3);
+  margin: 2.7rem;
+  height: 3rem;
+  position: absolute;
+  border-radius: 0.5rem;
 }
 
 .slot {
-    width: 3rem;
-    height: 9rem;
-    overflow: hidden;
-    white-space: nowrap;
-    background-color: #fff;
-    border-radius: 0.5rem;
-    margin-right: 1rem;
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+  width: 3rem;
+  height: 9rem;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .spinner {
-    margin-top: 1.2rem;
-    width: 3rem;
-    height: 9rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(47.4rem);
+  margin-top: 1.2rem;
+  width: 3rem;
+  height: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(47.4rem);
 }
 
 .animated-spinner {
-    animation-name: spinner;
-    animation-duration: 5s;
-    animation-play-state: running;
+  animation-name: spinner;
+  animation-duration: 5s;
+  animation-play-state: running;
 }
 
 @keyframes spinner {
-    0% {
-    }
-    20% {
-        transform: translateY(-47.4rem);
-        /* transform: scale(1000, calc(1 / 100)); */
-        transform: blur(0.5rem);
-    }
-    100% {
-    }
+  0% {
+  }
+  20% {
+    transform: translateY(-47.4rem);
+    /* transform: scale(1000, calc(1 / 100)); */
+    transform: blur(0.5rem);
+  }
+  100% {
+  }
 }
 
 .slot:last-child {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .slot span {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
 }
 
 .button:hover {
-    background-color: #0062cc;
+  background-color: #0062cc;
 }
 
 .title {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #fff;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
 }
 
 .message {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #007bff;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
 }
 
 .prob {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #6d6d6d;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6d6d6d;
 }
 
 .expended {
-    width: 25%;
-    background: linear-gradient(150deg, black, transparent);
-    opacity: 0.75;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: transparent;
-    color: rgb(241, 213, 213);
+  width: 25%;
+  background: linear-gradient(150deg, black, transparent);
+  opacity: 0.75;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: transparent;
+  color: rgb(241, 213, 213);
 }
 
 .bar {
-    width: 5%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background: transparent;
-    color: rgb(241, 213, 213);
+  width: 5%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: transparent;
+  color: rgb(241, 213, 213);
 }
 
 .but {
-    margin-bottom: 10%;
+  margin-bottom: 10%;
 }
 
 .icon {
-    float: right;
-    opacity: 100%;
+  float: right;
+  opacity: 100%;
 }
 
 .item {
-    padding: 5% 10%;
+  padding: 5% 10%;
 }
 
 .items {
-    opacity: 1;
+  opacity: 1;
 }
 
 .noItems {
-    opacity: 0;
+  opacity: 0;
 }
