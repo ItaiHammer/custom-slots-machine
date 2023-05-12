@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import { HiCog } from "react-icons/hi";
+import FeatherIcon from "feather-icons-react";
 
 export default function App() {
   const loser = [
@@ -56,8 +56,8 @@ export default function App() {
     "🍊",
     "🍪",
   ]);
-  const [emojisInUse, setEmojisInUse] = useState(3);
-  const [slotCount, setSlotCount] = useState(3);
+  const [emojisInUse, setEmojisInUse] = useState(2);
+  const [slotCount, setSlotCount] = useState(2);
   const [slots, setSlots] = useState([]);
   const [message, setMessage] = useState("");
   const [isSpinning, setIsSpinning] = useState(false);
@@ -219,16 +219,9 @@ function Sidebar() {
     // </div>
     <div className={`${expanded ? "expended" : "bar"}`}>
       <div className="menu">
-        <div className="but">
-          <button onClick={toggleSidebar}>
-            <HiCog
-              size={36}
-              color="white"
-              style={{ background: "none" }}
-              className="settings"
-            ></HiCog>
-          </button>
-        </div>
+        <button className="but" onClick={toggleSidebar}>
+          <FeatherIcon color="white" icon="settings" />
+        </button>
         <div className={`items ${expanded ? "" : "noItems"}`}>
           {lists?.map((item, i) => (
             <p className="item">{item.name}</p>

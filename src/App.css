@@ -123,7 +123,7 @@ body {
 
 .expended {
   background: #232428;
-  width: 100vw;
+  width: 30vw;
   height: 100vh;
   top: 0;
   left: 0;
@@ -143,15 +143,22 @@ body {
 }
 
 .but {
-  background: none;
-  margin-bottom: 10%;
+  background: #232428;
+  height: fit-content;
+  width: fit-content;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+.but:hover {
+  transform: rotate(90deg);
 }
 
 .settings {
-  background: none;
-  outline: none;
-  float: right;
-  opacity: 100%;
 }
 
 .item {
