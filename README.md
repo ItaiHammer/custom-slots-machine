@@ -1,6 +1,6 @@
 # Custom Slots Machine
 
-This project is hosted on [This website](https://).
+This project is hosted on [itaihammer.github.io/custom-slots-machine/](https://itaihammer.github.io/custom-slots-machine/).
 
 ## How to use
 
