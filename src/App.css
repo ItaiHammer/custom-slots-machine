@@ -57,6 +57,25 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transform: translateY(47.4rem);
+}
+
+.animated-spinner {
+    animation-name: spinner;
+    animation-duration: 5s;
+    animation-play-state: running;
+}
+
+@keyframes spinner {
+    0% {
+    }
+    20% {
+        transform: translateY(-47.4rem);
+        /* transform: scale(1000, calc(1 / 100)); */
+        transform: blur(0.5rem);
+    }
+    100% {
+    }
 }
 
 .slot:last-child {

@@ -53,12 +53,12 @@ export default function App() {
         '🍪',
         '🍫',
     ]);
-    const [emojisInUse, setEmojisInUse] = useState(3);
+    const [emojisInUse, setEmojisInUse] = useState(10);
     const [slotCount, setSlotCount] = useState(3);
     const [slots, setSlots] = useState([]);
     const [message, setMessage] = useState('');
     const [isSpinning, setIsSpinning] = useState(false);
-    const [time, setTime] = useState(500);
+    const [time, setTime] = useState(4000);
     const [animationChangeTime, setAnimationChangeTime] = useState(200);
 
     function randomizeSlots() {
@@ -66,8 +66,10 @@ export default function App() {
 
         for (let i = 0; i < slotCount; i++) {
             let temp2 = [];
-            for (let j = 0; j < 4; j++) {
-                temp2.push(emojis[Math.round(Math.random() * emojisInUse)]);
+            for (let j = 0; j < time / 100; j++) {
+                temp2.push(
+                    emojis[Math.round(Math.random() * (emojisInUse - 1))]
+                );
             }
             temp.push(temp2);
         }
@@ -78,6 +80,8 @@ export default function App() {
         if (isSpinning) return;
 
         setIsSpinning(true);
+
+        randomizeSlots();
 
         setTimeout(() => {
             setIsSpinning(false);
@@ -112,12 +116,12 @@ export default function App() {
             let slotSpots = [];
 
             for (let j = 0; j < slots[i].length; j++) {
-                slotSpots.push(<span>{slots[i][j]}</span>);
+                slotSpots.push(<span id={j}>{slots[i][j]}</span>);
             }
 
             let slot = (
                 <div className="slot">
-                    <div className="spinner">
+                    <div className="spinner animated-spinner">
                         {slotSpots.map((spot) => spot)}
                     </div>
                 </div>
@@ -138,20 +142,8 @@ export default function App() {
         return element;
     }
 
-    function spinningAnimation() {
-        setTimeout(() => {
-            if (!isSpinning) {
-                return;
-            } else {
-                randomizeSlots();
-                spinningAnimation();
-            }
-        }, animationChangeTime);
-    }
-
     useEffect(() => {
         if (isSpinning) {
-            // spinningAnimation();
         }
     }, [isSpinning]);
 
@@ -161,7 +153,7 @@ export default function App() {
         for (let i = 0; i < slotCount; i++) {
             let arr2 = [];
 
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 50; i++) {
                 arr2.push([]);
             }
 
