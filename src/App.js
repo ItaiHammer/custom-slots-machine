@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
-import { HiMenuAlt3 } from "react-icons/hi";
+import { HiCog } from "react-icons/hi";
 
 export default function App() {
   const loser = [
@@ -56,7 +56,7 @@ export default function App() {
     "🍊",
     "🍪",
   ]);
-  const [emojisInUse, setEmojisInUse] = useState(13);
+  const [emojisInUse, setEmojisInUse] = useState(3);
   const [slotCount, setSlotCount] = useState(3);
   const [slots, setSlots] = useState([]);
   const [message, setMessage] = useState("");
@@ -88,7 +88,9 @@ export default function App() {
     setTimeout(() => {
       setIsSpinning(false);
 
+      console.log(slots[0][1]);
       for (let i = 1; i < slots.length; i++) {
+        console.log(slots[i][1]);
         if (slots[i][1] !== slots[i - 1][1]) {
           setMessage(loser[Math.floor(Math.random() * loser.length)]);
           break;
@@ -96,6 +98,8 @@ export default function App() {
           setMessage(winner[Math.floor(Math.random() * winner.length)]);
         }
       }
+
+      console.log(slots[2]);
 
       console.log(message);
     }, time);
@@ -121,7 +125,7 @@ export default function App() {
       }
 
       let spinner = (
-        <div className="spinner animated-spinner">
+        <div className={"spinner " + (isSpinning ? "animated-spinner" : "")}>
           {slotSpots.map((spot) => spot)}
         </div>
       );
@@ -213,11 +217,16 @@ function Sidebar() {
     //         </div>
     //     )}
     // </div>
-    <div className={`${expanded ? "expanded" : "bar"}`}>
+    <div className={`${expanded ? "expended" : "bar"}`}>
       <div className="menu">
         <div className="but">
           <button onClick={toggleSidebar}>
-            <HiMenuAlt3 size={26} className="icon"></HiMenuAlt3>
+            <HiCog
+              size={36}
+              color="white"
+              style={{ background: "none" }}
+              className="settings"
+            ></HiCog>
           </button>
         </div>
         <div className={`items ${expanded ? "" : "noItems"}`}>

@@ -49,7 +49,7 @@ body {
 }
 
 .spinner {
-  margin-top: 1.2rem;
+  margin-top: 1.8rem;
   width: 3rem;
   height: 9rem;
   display: flex;
@@ -61,8 +61,7 @@ body {
 
 .animated-spinner {
   animation-name: spinner;
-  animation-duration: 5s;
-  animation-play-state: running;
+  animation-duration: 4s;
 }
 
 @keyframes spinner {
@@ -70,8 +69,8 @@ body {
   }
   20% {
     transform: translateY(-47.4rem);
-    /* transform: scale(1000, calc(1 / 100)); */
-    transform: blur(0.5rem);
+    filter: blur(0.5rem);
+    transform: scale(0.3, 5);
   }
   100% {
   }
@@ -123,15 +122,14 @@ body {
 }
 
 .expended {
-  width: 25%;
-  background: linear-gradient(150deg, black, transparent);
-  opacity: 0.75;
-  height: 100%;
+  background: #232428;
+  width: 100vw;
+  height: 100vh;
   top: 0;
   left: 0;
   position: absolute;
-  background: transparent;
   color: rgb(241, 213, 213);
+  z-index: 2;
 }
 
 .bar {
@@ -145,10 +143,13 @@ body {
 }
 
 .but {
+  background: none;
   margin-bottom: 10%;
 }
 
-.icon {
+.settings {
+  background: none;
+  outline: none;
   float: right;
   opacity: 100%;
 }
