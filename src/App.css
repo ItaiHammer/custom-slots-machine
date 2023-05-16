@@ -80,6 +80,46 @@ body {
   margin-right: 0;
 }
 
+/* .spinner1 {
+  animation-delay: 0.1s;
+}
+
+.spinner2 {
+  animation-delay: 0.2s;
+}
+
+.spinner3 {
+  animation-delay: 0.3s;
+}
+
+.spinner4 {
+  animation-delay: 0.4s;
+}
+
+.spinner5 {
+  animation-delay: 0.5s;
+}
+
+.spinner6 {
+  animation-delay: 0.6s;
+}
+
+.spinner7 {
+  animation-delay: 0.7s;
+}
+
+.spinner8 {
+  animation-delay: 0.8s;
+}
+
+.spinner9 {
+  animation-delay: 0.9s;
+}
+
+.spinner10 {
+  animation-delay: 1s;
+} */
+
 .slot span {
   font-size: 2rem;
 }
@@ -123,13 +163,14 @@ body {
 
 .expended {
   background: #232428;
-  width: 30vw;
+  width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   position: absolute;
   color: rgb(241, 213, 213);
   z-index: 2;
+  transition: 1s ease-in-out;
 }
 
 .bar {
@@ -140,6 +181,7 @@ body {
   position: absolute;
   background: transparent;
   color: rgb(241, 213, 213);
+  transition: 1s ease-in-out;
 }
 
 .but {

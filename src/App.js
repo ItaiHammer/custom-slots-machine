@@ -88,21 +88,26 @@ export default function App() {
     setTimeout(() => {
       setIsSpinning(false);
 
-      console.log(slots[0][1]);
-      for (let i = 1; i < slots.length; i++) {
-        console.log(slots[i][1]);
-        if (slots[i][1] !== slots[i - 1][1]) {
-          setMessage(loser[Math.floor(Math.random() * loser.length)]);
-          break;
-        } else if (i === slots.length - 1) {
-          setMessage(winner[Math.floor(Math.random() * winner.length)]);
-        }
-      }
-
-      console.log(slots[2]);
+      updateMessage();
 
       console.log(message);
     }, time);
+    console.log(message);
+    console.log("-----------------------------");
+
+    setMessage("");
+  }
+
+  function updateMessage() {
+    for (let i = 1; i < slots.length; i++) {
+      if (slots[i - 1][1] !== slots[i][1]) {
+        setMessage(loser[Math.floor(Math.random() * loser.length)]);
+        return;
+      } else if (i === slots.length - 1) {
+        setMessage(winner[Math.floor(Math.random() * winner.length)]);
+        return;
+      }
+    }
   }
 
   function calProbability() {
@@ -125,7 +130,14 @@ export default function App() {
       }
 
       let spinner = (
-        <div className={"spinner " + (isSpinning ? "animated-spinner" : "")}>
+        <div
+          className={
+            "spinner " +
+            ("spinner" + (i + 1)) +
+            " " +
+            (isSpinning ? "animated-spinner" : "")
+          }
+        >
           {slotSpots.map((spot) => spot)}
         </div>
       );
