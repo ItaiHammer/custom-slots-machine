@@ -56,19 +56,19 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transform: translateY(47.4rem);
+  transform: translateY(101.2rem);
 }
 
 .animated-spinner {
   animation-name: spinner;
-  animation-duration: 4s;
+  animation-duration: 7s;
 }
 
 @keyframes spinner {
   0% {
   }
   20% {
-    transform: translateY(-47.4rem);
+    transform: translateY(-105.6rem);
     filter: blur(0.5rem);
     transform: scale(0.3, 5);
   }

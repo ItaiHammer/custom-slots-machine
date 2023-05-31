@@ -58,13 +58,13 @@ export default function App() {
     "🍪",
   ]);
   const [displayWinChance, setDisplayWinChance] = useState(true);
-  const [emojisInUse, setEmojisInUse] = useState(2);
+  const [emojisInUse, setEmojisInUse] = useState(3);
   const [slotCount, setSlotCount] = useState(3);
   const [slots, setSlots] = useState([]);
   const [hasWon, setHasWon] = useState(null);
   const [message, setMessage] = useState("");
   const [isSpinning, setIsSpinning] = useState(false);
-  const [time, setTime] = useState(4000);
+  const [time, setTime] = useState(7000);
   const [animationChangeTime, setAnimationChangeTime] = useState(200);
   const [spinnerElements, setSpinnerElements] = useState([]);
   const [expanded, setExpanded] = useState(false);
@@ -75,7 +75,7 @@ export default function App() {
 
     for (let i = 0; i < slotCount; i++) {
       let temp2 = [];
-      for (let j = 0; j < time / 100; j++) {
+      for (let j = 0; j < (time * 2) / 100; j++) {
         temp2.push(emojis[Math.round(Math.random() * (emojisInUse - 1))]);
       }
       temp.push(temp2);
