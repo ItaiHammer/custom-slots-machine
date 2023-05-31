@@ -170,18 +170,19 @@ body {
   position: absolute;
   color: rgb(241, 213, 213);
   z-index: 2;
-  transition: 1s ease-in-out;
+  transition: 0.3s ease-in-out;
+  display: block;
 }
 
 .bar {
-  width: 5%;
-  height: 100%;
+  width: 0vw;
+  height: 100vh;
   top: 0;
   left: 0;
   position: absolute;
   background: transparent;
   color: rgb(241, 213, 213);
-  transition: 1s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .but {
@@ -191,20 +192,38 @@ body {
   margin-top: 1rem;
   margin-left: 1rem;
   padding: 0.5rem;
-  transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: 0.1s ease-in-out;
   cursor: pointer;
   border-radius: 100px;
+  position: fixed;
 }
 
 .but:hover {
-  transform: rotate(90deg);
+  transform: scale(1.1);
 }
 
 .settings {
 }
 
 .item {
-  padding: 5% 10%;
+  padding: 2% 4%;
+  margin-left: 15%;
+  border-radius: 10px;
+}
+
+.item-input {
+  background-color: #313338;
+  color: white;
+  padding: 2% 4%;
+  margin-left: 15%;
+  border-radius: 10px;
+  width: 30%;
+  outline: none;
+}
+
+.item input {
+  background-color: #313338;
+  color: #fff;
 }
 
 .items {
@@ -213,4 +232,5 @@ body {
 
 .noItems {
   opacity: 0;
+  display: none;
 }

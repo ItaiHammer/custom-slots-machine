@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 import FeatherIcon from "feather-icons-react";
+import { Slider, RangeSlider, Row, Col, InputGroup, InputNumber } from "rsuite";
 
 export default function App() {
   const loser = [
@@ -56,14 +57,18 @@ export default function App() {
     "🍊",
     "🍪",
   ]);
+  const [displayWinChance, setDisplayWinChance] = useState(true);
   const [emojisInUse, setEmojisInUse] = useState(2);
-  const [slotCount, setSlotCount] = useState(2);
+  const [slotCount, setSlotCount] = useState(3);
   const [slots, setSlots] = useState([]);
+  const [hasWon, setHasWon] = useState(null);
   const [message, setMessage] = useState("");
   const [isSpinning, setIsSpinning] = useState(false);
   const [time, setTime] = useState(4000);
   const [animationChangeTime, setAnimationChangeTime] = useState(200);
   const [spinnerElements, setSpinnerElements] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const body = useRef();
 
   function randomizeSlots() {
     let temp = [];
@@ -89,22 +94,20 @@ export default function App() {
       setIsSpinning(false);
 
       updateMessage();
-
-      console.log(message);
     }, time);
-    console.log(message);
-    console.log("-----------------------------");
 
     setMessage("");
   }
 
   function updateMessage() {
+    console.log(slots.length);
     for (let i = 1; i < slots.length; i++) {
+      console.log("comparing: " + slots[i - 1][1] + " to " + slots[i][1]);
       if (slots[i - 1][1] !== slots[i][1]) {
-        setMessage(loser[Math.floor(Math.random() * loser.length)]);
+        setHasWon(false);
         return;
       } else if (i === slots.length - 1) {
-        setMessage(winner[Math.floor(Math.random() * winner.length)]);
+        setHasWon(true);
         return;
       }
     }
@@ -190,8 +193,126 @@ export default function App() {
     randomizeSlots();
   }, [slotCount]);
 
+  useEffect(() => {
+    console.log(hasWon);
+    if (hasWon) {
+      setMessage(winner[Math.floor(Math.random() * winner.length)]);
+    } else if (!hasWon) {
+      setMessage(loser[Math.floor(Math.random() * loser.length)]);
+    } else if (hasWon == null) {
+      setMessage("");
+    }
+  }, [hasWon]);
+
+  function Slider() {
+    const [value, setValue] = React.useState(0);
+    return (
+      <Row>
+        <Col md={10}>
+          <Slider
+            progress
+            style={{ marginTop: 16 }}
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+            }}
+          />
+        </Col>
+        <Col md={4}>
+          <InputNumber
+            min={0}
+            max={100}
+            value={value}
+            onChange={(value) => {
+              setValue(value);
+            }}
+          />
+        </Col>
+      </Row>
+    );
+  }
+
+  function Sidebar() {
+    const toggleSidebar = () => {
+      setExpanded(!expanded);
+    };
+
+    const lists = [
+      {
+        name: "Slot Count",
+        var: slotCount,
+        set: setSlotCount,
+        type: "num",
+        low: 0,
+        high: 9,
+      },
+      {
+        name: "Emojis In Use",
+        var: emojisInUse,
+        set: setEmojisInUse,
+        type: "num",
+        low: 0,
+        high: 10,
+      },
+      {
+        name: "Show Win Chance",
+        var: displayWinChance,
+        set: setDisplayWinChance,
+        type: "toggle",
+      },
+    ];
+
+    return (
+      // <div className={`sidebar ${expanded ? 'expanded' : ''}`}>
+      //     <button onClick={toggleSidebar}>Toggle Sidebar</button>
+      //     {expanded && (
+      //         <div className="sidebar-content">
+      //             {/* put your sidebar content here */}
+      //         </div>
+      //     )}
+      // </div>
+      <div className={`${expanded ? "expended" : "bar"}`}>
+        <div className="menu">
+          <button className="but" onClick={toggleSidebar}>
+            <FeatherIcon color="white" icon="settings" />
+          </button>
+          <div className={`items ${expanded ? "" : "noItems"}`}>
+            {lists?.map((item, i) => (
+              <>
+                <p className="item">{item.name}</p>
+                {item.type === "num" ? (
+                  <input
+                    className="item-input"
+                    type="number"
+                    min={item.low}
+                    max={item.high}
+                    value={item.var}
+                    onChange={(e) => {
+                      item.set(e.target.value);
+                      e.target.select();
+                      e.target.focus();
+                    }}
+                  />
+                ) : item.type === "toggle" ? (
+                  <input
+                    type="checkbox"
+                    onChange={(e) => item.set(!item.var)}
+                    value={item.var}
+                    className="item"
+                  />
+                ) : (
+                  ""
+                )}
+              </>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="window">
+    <div className="window" ref={body}>
       <Sidebar />
       <div className="App">
         <h1 className="title">Slot Machine</h1>
@@ -199,46 +320,9 @@ export default function App() {
         <button className="button" onClick={spin}>
           Spin
         </button>
-        <p className="message">{message}</p>
-        <p className="prob">{"Win Chance: " + calProbabilityText()}</p>
-      </div>
-    </div>
-  );
-}
-
-function Sidebar() {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleSidebar = () => {
-    setExpanded(!expanded);
-  };
-
-  const lists = [
-    { name: "check1" },
-    { name: "check2" },
-    { name: "check3" },
-    { name: "check4" },
-  ];
-
-  return (
-    // <div className={`sidebar ${expanded ? 'expanded' : ''}`}>
-    //     <button onClick={toggleSidebar}>Toggle Sidebar</button>
-    //     {expanded && (
-    //         <div className="sidebar-content">
-    //             {/* put your sidebar content here */}
-    //         </div>
-    //     )}
-    // </div>
-    <div className={`${expanded ? "expended" : "bar"}`}>
-      <div className="menu">
-        <button className="but" onClick={toggleSidebar}>
-          <FeatherIcon color="white" icon="settings" />
-        </button>
-        <div className={`items ${expanded ? "" : "noItems"}`}>
-          {lists?.map((item, i) => (
-            <p className="item">{item.name}</p>
-          ))}
-        </div>
+        <p className="prob">
+          {displayWinChance ? "Win Chance: " + calProbabilityText() : ""}
+        </p>
       </div>
     </div>
   );
